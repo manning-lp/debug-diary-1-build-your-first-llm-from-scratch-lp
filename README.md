@@ -26,3 +26,18 @@ python -m unittest -v
 ```
 
 No Hugging Face token or pretrained weights are required for this milestone.
+
+## Milestone 2: Initialize with GPU support
+
+`milestone_2.py` assembles the complete model, reduces its context length,
+selects CUDA, Apple Metal, or CPU in that order, and validates the model with a
+dummy forward pass. It uses BF16 where supported, FP16 on a T4 GPU or Apple
+Metal, and FP32 for the CPU fallback.
+
+The full-size course model should be run in Google Colab with GPU acceleration:
+
+[Open Milestone 2 in Google Colab](https://colab.research.google.com/github/manning-lp/debug-diary-1-build-your-first-llm-from-scratch-lp/blob/main/milestone_2_colab.ipynb)
+
+Choose **Runtime → Change runtime type → T4 GPU**, then run all cells. The local
+unit test uses the same complete architecture with small dimensions so it can
+verify the full execution path without requiring several gigabytes of memory.
